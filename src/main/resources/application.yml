@@ -13,6 +13,10 @@ spring:
     activate:
       on-profile: common
 
+jwt:
+  secret-key: DreamMate-application-2023.secret_key
+  token.expired-time-ms: 2592000000 # 30 days
+
 ---
 spring:
   config:
@@ -28,11 +32,16 @@ spring:
     port: 6379
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
 jwt:
   secret-key: DreamMate-application-2023.secret_key
   token.expired-time-ms: 2592000000 # 30 days
+
+dream:
+  mate:
+    base:
+      url: http://localhost:8080/dir/
 
 
 ---
@@ -52,14 +61,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-jwt:
-  secret-key: DreamMate-application-2023.secret_key
-  token.expired-time-ms: 2592000000 # 30 days
 
 dream:
   mate:
     base:
-      url: http://13.209.32.116/dir/
+      url: http://15.164.7.134/dir/
 
       # /dir/은 경로(path)를 나타냅니다. 이것은 웹 서버 상의 특정 디렉토리를 가리키거나, 어플리케이션 내에서 특정한 라우트를 의미할 수 있습니다.
       #특정 디렉토리나 경로를 URL에 포함하는 것은 해당 URL이 서버 내부에서 특정 디렉토리로 라우팅되거나, 애플리케이션 내의 특정한 엔드포인트로 매핑되도록 하는 역할을 합니다.
