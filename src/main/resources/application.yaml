@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  error:
+    include-exception: 'true'
+    include-stacktrace: always
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: debug
+spring:
+  redis:
+    host: host.docker.internal
+    lettuce:
+      pool:
+        max-active: 5
+        max-idle: 5
+        min-idle: 2
+    port: 6379
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/dreammate
+    username: backend
+    password: backend
+    hikari:
+      auto-commit: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+        use_sql_comments: true
+        default_batch_fetch_size: 100
+    show-sql: true
+
+
+jwt:
+  secret-key: DreamMate-application-2023.secret_key
+  # 30 days
+  token.expired-time-ms: 2592000000
